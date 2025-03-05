@@ -1,2 +1,1 @@
-wet32wy
-g
+print("Whhoh")
