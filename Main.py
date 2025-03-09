@@ -3,6 +3,8 @@ import sys # Random stuff to make typewritter effect work
 from time import sleep # Kinda understand this 
 #import random # To mix up questions WEP
 
+score = 0 # Score system determines the score of the player
+
 def typewritter(words): # Typewritter effect to make the quiz look less boring
     for char in words:
         sleep(0.03) # Change this for the typewritter speed
@@ -49,6 +51,7 @@ def topic_selector(): # Asks the user for which topic they should chose
             print("Please answer carefully")
 
 def question_getter_General(Questions): # Grabbing the questions for the quiz # Need to change it 
+    global score # Makes the score global so it can be used in the function, otherwise there would be an error, Co Pilot helped me with this
     for questions in Questions: # Loops through the dictionary on other file for the stuff in questions
         if questions['topic'] == "General":
             typewritter(questions['question']) # Prints the question
@@ -56,12 +59,14 @@ def question_getter_General(Questions): # Grabbing the questions for the quiz # 
             answer = answer.lower() # Makes the answer lowercase so it can be compared to the answer in the dictionary
             if answer == questions['answer']: # Checks if the answer is correct
                 typewritter("Correct!") # If the answer is correct, Early stages of the quiz, will change and add score system later
+                score += 1 
             else:
                 typewritter("Incorrect!")
 
 def main(): # Sir won't let the large 1000 line code happen :( wants it to be neat, make it condensed into large function
     welcome_to_awesome_quiz() # Calls the welcome function to introduce player etc
     topic_selector()
+    typewritter("Your score in this quiz is: " + str(score)) # Prints the score of the player
     
     #question_getter(questions) # Not sure what to do with him probably will be used in something else
 
