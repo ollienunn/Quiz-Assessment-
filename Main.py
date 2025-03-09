@@ -19,7 +19,7 @@ def typewritter(words): # Typewritter effect to make the quiz look less boring
 def welcome_to_awesome_quiz(): # Introduces player gives a short intro / a brief description of the categories
     typewritter("Welcome sir to the most fantastic, amazing, best crafted quiz you will ever have the joy of taking.")
     typewritter("This quiz will have three categories, how great is that!")
-    typewritter("The categories are....")
+    typewritter("The categories are...")
     typewritter("General Knowledge, can you get 10 / 10?")
     typewritter("Sport, Hope you know lots of different sports.")
     typewritter("Other, it's like General Knowledge but has very random questions, so you get hints for this one. You will need it.")
@@ -44,11 +44,15 @@ def topic_selector(): # Asks the user for which topic they should chose
         elif decision_real == "sport":
             valid_answer = True
             typewritter("So your sporty")
+            question_getter_Sport(questions)
         elif decision_real == "other":
             valid_answer = True
             typewritter("Hope your prepared")
         else:
             print("Please answer carefully")
+
+#########################################################################################################################
+#Could make this a lot cleaner and more efficient, will do later, for now make sure it works
 
 def question_getter_General(Questions): # Grabbing the questions for the quiz # Need to change it 
     global score # Makes the score global so it can be used in the function, otherwise there would be an error, Co Pilot helped me with this
@@ -58,11 +62,40 @@ def question_getter_General(Questions): # Grabbing the questions for the quiz # 
             typewritter(question['question']) # Prints the question
             answer = input("") # Gets the answer from the player
             answer = answer.lower() # Makes the answer lowercase so it can be compared to the answer in the dictionary
-            if answer == question['answer']: # Checks if the answer is correct
+            if answer in question['answer']: # Checks if the answer is correct
                 typewritter("Correct!") # If the answer is correct, Early stages of the quiz, will change and add score system later
                 score += 1 
             else:
                 typewritter("Incorrect!")
+
+def question_getter_Sport(Questions): # Grabbing the questions for the quiz # Need to change it 
+    global score # Makes the score global so it can be used in the function, otherwise there would be an error, Co Pilot helped me with this
+    random.shuffle(Questions) # Shuffles the questions so they are not in the same order every time
+    for question in Questions: # Loops through the dictionary on other file for the stuff in questions
+        if question['topic'] == "Sport":
+            typewritter(question['question']) # Prints the question
+            answer = input("") # Gets the answer from the player
+            answer = answer.lower() # Makes the answer lowercase so it can be compared to the answer in the dictionary
+            if answer in question['answer']: # Checks if the answer is correct
+                typewritter("Correct!") # If the answer is correct, Early stages of the quiz, will change and add score system later
+                score += 1 
+            else:
+                typewritter("Incorrect!")
+
+def question_getter_Other(Questions): # Grabbing the questions for the quiz # Need to change it 
+    global score # Makes the score global so it can be used in the function, otherwise there would be an error, Co Pilot helped me with this
+    random.shuffle(Questions) # Shuffles the questions so they are not in the same order every time
+    for question in Questions: # Loops through the dictionary on other file for the stuff in questions
+        if question['topic'] == "Other":
+            typewritter(question['question']) # Prints the question
+            answer = input("") # Gets the answer from the player
+            answer = answer.lower() # Makes the answer lowercase so it can be compared to the answer in the dictionary
+            if answer in question['answer']: # Checks if the answer is correct
+                typewritter("Correct!") # If the answer is correct, Early stages of the quiz, will change and add score system later
+                score += 1 
+            else:
+                typewritter("Incorrect!")
+#########################################################################################################################
 
 def main(): # Sir won't let the large 1000 line code happen :( wants it to be neat, make it condensed into large function
     welcome_to_awesome_quiz() # Calls the welcome function to introduce player etc
