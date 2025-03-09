@@ -1,7 +1,7 @@
 from Questions import questions # Gets the file called questions than imports the dictionary called questions, very cool, very useful
 import sys # Random stuff to make typewritter effect work
 from time import sleep # Kinda understand this 
-#import random # To mix up questions WEP
+import random # To mix up questions WEP
 
 score = 0 # Score system determines the score of the player
 
@@ -52,12 +52,13 @@ def topic_selector(): # Asks the user for which topic they should chose
 
 def question_getter_General(Questions): # Grabbing the questions for the quiz # Need to change it 
     global score # Makes the score global so it can be used in the function, otherwise there would be an error, Co Pilot helped me with this
-    for questions in Questions: # Loops through the dictionary on other file for the stuff in questions
-        if questions['topic'] == "General":
-            typewritter(questions['question']) # Prints the question
+    random.shuffle(Questions) # Shuffles the questions so they are not in the same order every time
+    for question in Questions: # Loops through the dictionary on other file for the stuff in questions
+        if question['topic'] == "General":
+            typewritter(question['question']) # Prints the question
             answer = input("") # Gets the answer from the player
             answer = answer.lower() # Makes the answer lowercase so it can be compared to the answer in the dictionary
-            if answer == questions['answer']: # Checks if the answer is correct
+            if answer == question['answer']: # Checks if the answer is correct
                 typewritter("Correct!") # If the answer is correct, Early stages of the quiz, will change and add score system later
                 score += 1 
             else:
