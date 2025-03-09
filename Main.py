@@ -68,6 +68,20 @@ def main(): # Sir won't let the large 1000 line code happen :( wants it to be ne
     welcome_to_awesome_quiz() # Calls the welcome function to introduce player etc
     topic_selector()
     typewritter("Your score in this quiz is: " + str(score)) # Prints the score of the player
+    typewritter("Would you like to play again?") # Asks the player if they would like to play again
+    # Loop to make sure the player answers yes or no otherwise it will keep asking the question
+    valid_answer = False # Needed to start the loop
+    while valid_answer == False: # Simple loop to check whether the answer is one that is avaible otherwise restates the question
+        answer = input("") # Gets the answer from the player
+        answer = answer.lower() # Makes the answer lowercase
+        if answer == "yes": # Checks if the answer is either yes or no
+            valid_answer = True # Ends the loop as it is an answer available
+            main()
+        elif answer == "no":
+            valid_answer = True
+            typewritter("Thank you for playing")
+        else:
+            print("Please answer carefully")
     
     #question_getter(questions) # Not sure what to do with him probably will be used in something else
 
