@@ -24,35 +24,52 @@ def welcome_to_awesome_quiz(): # Introduces player gives a short intro / a brief
     typewritter("Sport, Hope you know lots of different sports.")
     typewritter("Other, it's like General Knowledge but has very random questions, so you get hints for this one. You will need it.")
 
+#########################################################################################################################
+
+#Could make this a lot cleaner, will do later, for now make sure it works
+
 def General_Knowledge():
     print("\n") # \ (if needed again) It makes a gap on the console, cleaner to look at
     typewritter("Welcome to the General Knowledge quiz")
     typewritter("Lets get started")
     question_getter_General(questions) # Calls the function to get the questions
 
+def Sport():
+    print("\n") # \ (if needed again) It makes a gap on the console, cleaner to look at
+    typewritter("Welcome to the Sport quiz")
+    typewritter("Lets get started")
+    question_getter_Sport(questions) # Calls the function to get the questions
+
+def Other():
+    print("\n") # \ (if needed again) It makes a gap on the console, cleaner to look at
+    typewritter("Welcome to the most random quiz")
+    typewritter("Lets get started")
+    question_getter_Other(questions) # Calls the function to get the questions
+
+#########################################################################################################################
+
 def topic_selector(): # Asks the user for which topic they should chose
     typewritter("Now lets challenge you, what topic would you like to choose?")
     valid_answer = False # Needed to start the loop
+    score = 0 # Resets the score to 0
     while valid_answer == False: # Simple loop to check whether the answer is one that is avaible otherwise restates the question
         typewritter("General Knowledge, Sport or Other ")
         decision = input("") # Gets the input from the player
         decision_real = decision.lower() # Makes it all lowercase so any way to type it will work
         if decision_real == "general knowledge": # Must be all lower case
             valid_answer = True # Ends the loop as it is an answer available
-            typewritter("Good choice on General Knowledge")
             General_Knowledge() # Moves to the General knowledge part
         elif decision_real == "sport":
             valid_answer = True
-            typewritter("So your sporty")
-            question_getter_Sport(questions)
+            Sport() # Moves to the Sport part
         elif decision_real == "other":
             valid_answer = True
-            typewritter("Hope your prepared")
+            Other() # Moves to the Other part
         else:
             print("Please answer carefully")
 
 #########################################################################################################################
-#Could make this a lot cleaner and more efficient, will do later, for now make sure it works
+#Could make this a lot cleaner will do later, for now make sure it works
 
 def question_getter_General(Questions): # Grabbing the questions for the quiz # Need to change it 
     global score # Makes the score global so it can be used in the function, otherwise there would be an error, Co Pilot helped me with this
@@ -100,7 +117,7 @@ def question_getter_Other(Questions): # Grabbing the questions for the quiz # Ne
 def main(): # Sir won't let the large 1000 line code happen :( wants it to be neat, make it condensed into large function
     welcome_to_awesome_quiz() # Calls the welcome function to introduce player etc
     topic_selector()
-    typewritter("Your score in this quiz is: " + str(score)) # Prints the score of the player
+    typewritter(f"Your score in this quiz is: {score}" ) # Prints the score of the player
     typewritter("Would you like to play again?") # Asks the player if they would like to play again
     # Loop to make sure the player answers yes or no otherwise it will keep asking the question
     valid_answer = False # Needed to start the loop
