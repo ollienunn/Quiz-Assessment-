@@ -4,6 +4,7 @@ from time import sleep # Kinda understand this
 import random # To mix up questions WEP
 
 score = 0 # Score system determines the score of the player
+hints = 3 # Hints system determines the hints the player has used
 
 def typewritter(words): # Typewritter effect to make the quiz look less boring
     for char in words:
@@ -43,6 +44,7 @@ def Sport():
 def Other():
     print("\n") # \ (if needed again) It makes a gap on the console, cleaner to look at
     typewritter("Welcome to the most random quiz")
+    typewritter("For this quiz you will have 3 hints, use them wisely")
     typewritter("Lets get started")
     question_getter_Other(questions) # Calls the function to get the questions
 
@@ -51,7 +53,6 @@ def Other():
 def topic_selector(): # Asks the user for which topic they should chose
     typewritter("Now lets challenge you, what topic would you like to choose?")
     valid_answer = False # Needed to start the loop
-    score = 0 # Resets the score to 0
     while valid_answer == False: # Simple loop to check whether the answer is one that is avaible otherwise restates the question
         typewritter("General Knowledge, Sport or Other ")
         decision = input("") # Gets the input from the player
@@ -78,12 +79,13 @@ def question_getter_General(Questions): # Grabbing the questions for the quiz # 
         if question['topic'] == "General":
             typewritter(question['question']) # Prints the question
             answer = input("") # Gets the answer from the player
-            answer = answer.lower() # Makes the answer lowercase so it can be compared to the answer in the dictionary
+            answer = answer.lower().strip() # Makes the answer lowercase so it can be compared to the answer in the dictionary
             if answer in question['answer']: # Checks if the answer is correct
                 typewritter("Correct!") # If the answer is correct, Early stages of the quiz, will change and add score system later
                 score += 1 
-            else:
-                typewritter("Incorrect!")
+            else: # If the answer is wrong
+                typewritter("Incorrect!") # Bully the player
+                typewritter(f"The answer is {question['answer']}") # Tells the player the answer if they get it wrong
 
 def question_getter_Sport(Questions): # Grabbing the questions for the quiz # Need to change it 
     global score # Makes the score global so it can be used in the function, otherwise there would be an error, Co Pilot helped me with this
@@ -92,30 +94,52 @@ def question_getter_Sport(Questions): # Grabbing the questions for the quiz # Ne
         if question['topic'] == "Sport":
             typewritter(question['question']) # Prints the question
             answer = input("") # Gets the answer from the player
-            answer = answer.lower() # Makes the answer lowercase so it can be compared to the answer in the dictionary
+            answer = answer.lower().strip() # Makes the answer lowercase so it can be compared to the answer in the dictionary
             if answer in question['answer']: # Checks if the answer is correct
                 typewritter("Correct!") # If the answer is correct, Early stages of the quiz, will change and add score system later
                 score += 1 
             else:
                 typewritter("Incorrect!")
+                typewritter(f"The answer is {question['answer']}") # Tells the player the answer if they get it wrong
 
 def question_getter_Other(Questions): # Grabbing the questions for the quiz # Need to change it 
     global score # Makes the score global so it can be used in the function, otherwise there would be an error, Co Pilot helped me with this
+    global hints # Makes the hints global so it can be used in the function, otherwise there would be an error, Co Pilot helped me with this
     random.shuffle(Questions) # Shuffles the questions so they are not in the same order every time
     for question in Questions: # Loops through the dictionary on other file for the stuff in questions
         if question['topic'] == "Other":
-            typewritter(question['question']) # Prints the question
-            answer = input("") # Gets the answer from the player
-            answer = answer.lower() # Makes the answer lowercase so it can be compared to the answer in the dictionary
-            if answer in question['answer']: # Checks if the answer is correct
-                typewritter("Correct!") # If the answer is correct, Early stages of the quiz, will change and add score system later
-                score += 1 
-            else:
-                typewritter("Incorrect!")
+            hint_loop = True # Only idea for hints to work
+            while hint_loop == True: # Simple loop 
+                typewritter(question['question']) # Prints the question
+                answer = input("") # Gets the answer from the player
+                answer = answer.lower().strip() # Makes the answer lowercase so it can be compared to the answer in the dictionary, strip makes it so spaces after the answer don't matter
+                if answer == "":
+                    hint_loop = True
+                    typewritter("Please answer the question")
+                elif answer in question['answer']: # Checks if the answer is correct
+                    hint_loop = False # Ends the loop as it is an answer available
+                    typewritter("Correct!") # If the answer is correct, Early stages of the quiz, will change and add score system later
+                    score += 1 
+                elif answer == "hint" and hints > 0: # If the player types hint, it will give them a hint
+                    hint_loop = True
+                    typewritter(question['hint'])
+                    hints -= 1
+                    typewritter(f"You have {hints} hints left")
+                    typewritter("Here's the question again")
+                elif answer == "hint" and hints == 0: # If the player types hint, it will give them a hint
+                    hint_loop = True
+                    typewritter("You have no hints left")
+                    typewritter("Please answer the question")
+                else:
+                    hint_loop = False
+                    typewritter("Incorrect!")
+                    typewritter(f"The answer is {question['answer']}") # Tells the player the answer if they get it wrong
 #########################################################################################################################
 
 def main(): # Sir won't let the large 1000 line code happen :( wants it to be neat, make it condensed into large function
-    welcome_to_awesome_quiz() # Calls the welcome function to introduce player etc
+    #welcome_to_awesome_quiz() # Calls the welcome function to introduce player etc
+    global score
+    global hints
     topic_selector()
     typewritter(f"Your score in this quiz is: {score}" ) # Prints the score of the player
     typewritter("Would you like to play again?") # Asks the player if they would like to play again
@@ -126,6 +150,8 @@ def main(): # Sir won't let the large 1000 line code happen :( wants it to be ne
         answer = answer.lower() # Makes the answer lowercase
         if answer == "yes": # Checks if the answer is either yes or no
             valid_answer = True # Ends the loop as it is an answer available
+            score = 0
+            hints = 3
             main()
         elif answer == "no":
             valid_answer = True
