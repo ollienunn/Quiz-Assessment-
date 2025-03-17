@@ -1,4 +1,3 @@
-from unicodedata import category
 from Questions import questions # Gets the file called questions than imports the dictionary called questions, very cool, very useful
 import sys # Random stuff to make typewritter effect work
 from time import sleep # Kinda understand this 
@@ -166,9 +165,8 @@ def question_getter_Other(Questions): # Grabbing the questions for the quiz # Ne
 
 #######################################################################
 
-# My idea and i tried to do it but co pilot carried me
+# My idea and i tried to do it but co pilot carried me, this is for the leaderboard stuff
 # Didn't understand how to do it all co pilot, can hashtag out and not use in the marking
-
 def update_leaderboard(player_name, score, category):
     leaderboard_file = "leaderboard"
     if os.path.exists(leaderboard_file):
@@ -213,7 +211,7 @@ def main(): # Sir won't let the large 1000 line code happen :( wants it to be ne
     global score
     global hints
     global category
-    #welcome_to_awesome_quiz() # Calls the welcome function to introduce player etc
+    welcome_to_awesome_quiz() # Calls the welcome function to introduce player etc
     topic_selector()
     typewritter(f"Your score in this quiz is: {score}" ) # Prints the score of the player
     typewritter("Can we get your name please? ")
@@ -225,7 +223,7 @@ def main(): # Sir won't let the large 1000 line code happen :( wants it to be ne
     valid_answer = False # Needed to start the loop
     while valid_answer == False: # Simple loop to check whether the answer is one that is avaible otherwise restates the question
         answer = input("") # Gets the answer from the player
-        answer = answer.lower() # Makes the answer lowercase
+        answer = answer.lower().strip() # Makes the answer lowercase
         if answer == "yes": # Checks if the answer is either yes or no
             valid_answer = True # Ends the loop as it is an answer available
             score = 0
