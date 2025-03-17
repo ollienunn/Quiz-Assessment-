@@ -174,43 +174,52 @@ def update_leaderboard(player_name, score, category):
     if os.path.exists(leaderboard_file):
         with open(leaderboard_file, "r") as file:
             lines = file.readlines()
-            if lines and len(lines[0].strip().split(" with ")) > 1:
-                highest_score = int(lines[0].strip().split(" with ")[1].split(" ")[0])
-                if score > highest_score:
-                    with open(leaderboard_file, "w") as file:
-                        file.write(f"{player_name} with {score} in {category}\n")
-            else:
-                with open(leaderboard_file, "w") as file:
-                    file.write(f"{player_name} with {score} in {category}\n")
+            highest_score = 0
+            new_lines = []
+            updated = False
+            for line in lines:
+                if category in line:
+                    highest_score = int(line.strip().split(" with ")[1].split(" ")[0])
+                    if score > highest_score:
+                        new_lines.append(f"{player_name} with {score} in {category}\n")
+                        updated = True
+                    else:
+                        new_lines.append(line)
+                else:
+                    new_lines.append(line)
+            if not updated:
+                new_lines.append(f"{player_name} with {score} in {category}\n")
+            with open(leaderboard_file, "w") as file:
+                file.writelines(new_lines)
     else:
         with open(leaderboard_file, "w") as file:
             file.write(f"{player_name} with {score} in {category}\n")
 
-def display_leaderboard():
+def display_leaderboard(category):
     leaderboard_file = "leaderboard"
     if os.path.exists(leaderboard_file):
         with open(leaderboard_file, "r") as file:
             lines = file.readlines()
-            if lines:
-                typewritter(f"Highest Score: {lines[0].strip()}")
-            else:
-                typewritter("No scores yet.")
+            for line in lines:
+                if category in line:
+                    typewritter(f"Highest Score in {category}: {line.strip()}")
+                    return
+            typewritter(f"No scores yet in {category}.")
     else:
         typewritter("No scores yet.")
-
 #########################################################################################################################
 
 def main(): # Sir won't let the large 1000 line code happen :( wants it to be neat, make it condensed into large function
-    #welcome_to_awesome_quiz() # Calls the welcome function to introduce player etc
     global score
     global hints
     global category
+    #welcome_to_awesome_quiz() # Calls the welcome function to introduce player etc
     topic_selector()
     typewritter(f"Your score in this quiz is: {score}" ) # Prints the score of the player
-    typewritter("Can we get your name please?")
+    typewritter("Can we get your name please? ")
     player_name = input("").strip()
     update_leaderboard(player_name, score, category)
-    display_leaderboard()
+    display_leaderboard(category)
     typewritter("Would you like to play again?") # Asks the player if they would like to play again
     # Loop to make sure the player answers yes or no otherwise it will keep asking the question
     valid_answer = False # Needed to start the loop

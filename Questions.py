@@ -14,7 +14,7 @@ questions = [
     # Gap to make it look nicer and distinguish between the topics
 
     {"topic": "Other", "question": "Former Australian Prime Minister, Bob Hawke, set a beer drinking world record in which year?", "answer": "1954", "hint": "It was in the 1950s"},  
-    {"topic": "Other", "question": "What color is the fish from The Cat in the Hat?", "answer": "pink", "hint": "It is most girls favourite color"},
+    {"topic": "Other", "question": "What color is the fish from The Cat in the Hat?", "answer": "orange", "hint": "It has the same name as a fruit"},
     {"topic": "Other", "question": "What year year was Minecraft released?", "answer": "2009", "hint": "Cruz's birthday year"},
     {"topic": "Other", "question": "What country has the christmas pickle?", "answer": "america", "hint": "It is one of the most powerful countries in the world"},
     {"topic": "Other", "question": "What color is the 3 ball in pool?", "answer": "red", "hint": "It is in the rainbow, and one of the first colors"},

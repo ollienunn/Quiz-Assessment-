@@ -6,6 +6,7 @@ import os # To check if the file exists
 
 score = 0 # Score system determines the score of the player
 hints = 3 # Hints system determines the hints the player has used
+category = "" # Category is for the leaderboard
 
 def typewritter(words): # Typewritter effect to make the quiz look less boring
     for char in words:
@@ -29,6 +30,8 @@ def welcome_to_awesome_quiz(): # Introduces player gives a short intro / a brief
 #########################################################################################################################
 
 def General_Knowledge():
+    global category
+    category = "General Knowledge"
     print("\n") # \ (if needed again) It makes a gap on the console, cleaner to look at
     typewritter("Welcome to the General Knowledge quiz")
     typewritter("You don't get hints for this one, good luck")
@@ -36,6 +39,8 @@ def General_Knowledge():
     question_getter_General(questions) # Calls the function to get the questions
 
 def Sport():
+    global category
+    category = "Sport"
     print("\n") # \ (if needed again) It makes a gap on the console, cleaner to look at
     typewritter("Welcome to the Sport quiz")
     typewritter("You don't get hints for this one, good luck")
@@ -43,6 +48,8 @@ def Sport():
     question_getter_Sport(questions) # Calls the function to get the questions
 
 def Other():
+    global category
+    category = "Other"
     print("\n") # \ (if needed again) It makes a gap on the console, cleaner to look at
     typewritter("Welcome to the most random quiz")
     typewritter("For this quiz you will have 3 hints, use them wisely")
@@ -160,27 +167,37 @@ def update_leaderboard(player_name, score, category):
     if os.path.exists(leaderboard_file):
         with open(leaderboard_file, "r") as file:
             lines = file.readlines()
-            if lines:
-                highest_score = int(lines[0].strip().split(" with ")[1].split(" ")[0])
-                if score > highest_score:
-                    with open(leaderboard_file, "w") as file:
-                        file.write(f"{player_name} with {score} in {category}\n")
-            else:
-                with open(leaderboard_file, "w") as file:
-                    file.write(f"{player_name} with {score} in {category}\n")
+            highest_score = 0
+            new_lines = []
+            updated = False
+            for line in lines:
+                if category in line:
+                    highest_score = int(line.strip().split(" with ")[1].split(" ")[0])
+                    if score > highest_score:
+                        new_lines.append(f"{player_name} with {score} in {category}\n")
+                        updated = True
+                    else:
+                        new_lines.append(line)
+                else:
+                    new_lines.append(line)
+            if not updated:
+                new_lines.append(f"{player_name} with {score} in {category}\n")
+            with open(leaderboard_file, "w") as file:
+                file.writelines(new_lines)
     else:
         with open(leaderboard_file, "w") as file:
             file.write(f"{player_name} with {score} in {category}\n")
 
-def display_leaderboard():
+def display_leaderboard(category):
     leaderboard_file = "leaderboard"
     if os.path.exists(leaderboard_file):
         with open(leaderboard_file, "r") as file:
             lines = file.readlines()
-            if lines:
-                typewritter(f"Highest Score: {lines[0].strip()}")
-            else:
-                typewritter("No scores yet.")
+            for line in lines:
+                if category in line:
+                    typewritter(f"Highest Score in {category}: {line.strip()}")
+                    return
+            typewritter(f"No scores yet in {category}.")
     else:
         typewritter("No scores yet.")
 
@@ -189,6 +206,7 @@ def display_leaderboard():
 def main(): # Sir won't let the large 1000 line code happen :( wants it to be neat, make it condensed into large function
     global score
     global hints
+    global category
     score = 0
     hints = 3
     typewritter("Please enter your name: ")
@@ -203,7 +221,7 @@ def main(): # Sir won't let the large 1000 line code happen :( wants it to be ne
         Other()
     typewritter(f"Your score in this quiz is: {score}") # Prints the score of the player
     update_leaderboard(player_name, score, category)
-    display_leaderboard()
+    display_leaderboard(category)
     typewritter("Would you like to play again?") # Asks the player if they would like to play again
     # Loop to make sure the player answers yes or no otherwise it will keep asking the question
     valid_answer = False # Needed to start the loop
