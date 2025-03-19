@@ -27,14 +27,21 @@
         <mxCell id="zIbATSAzdwdfl3PP78mL-2" value="Introduce to the most amazing quiz ever" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="360" y="300" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="zIbATSAzdwdfl3PP78mL-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="zIbATSAzdwdfl3PP78mL-6" target="zIbATSAzdwdfl3PP78mL-8">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="zIbATSAzdwdfl3PP78mL-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="zIbATSAzdwdfl3PP78mL-6">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="420" y="540" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zIbATSAzdwdfl3PP78mL-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="zIbATSAzdwdfl3PP78mL-6" target="zIbATSAzdwdfl3PP78mL-11">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="650" y="445.33333333333337" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
         <mxCell id="zIbATSAzdwdfl3PP78mL-6" value="topic_selector()" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="360" y="415" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="zIbATSAzdwdfl3PP78mL-8" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="360" y="540" width="120" height="60" as="geometry" />
+        <mxCell id="zIbATSAzdwdfl3PP78mL-11" value="" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="610" y="405.33333333333337" width="80" height="80" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

@@ -18,5 +18,9 @@ questions = [
     {"topic": "Other", "question": "What year year was Minecraft released?", "answer": "2009", "hint": "Cruz's birthday year"},
     {"topic": "Other", "question": "What country has the christmas pickle?", "answer": "america", "hint": "It is one of the most powerful countries in the world"},
     {"topic": "Other", "question": "What color is the 3 ball in pool?", "answer": "red", "hint": "It is in the rainbow, and one of the first colors"},
+    {"topic": "Other", "question": "How many countries are recognized by the United Nations?", "answer": "195", "hint": "It is barely less than 200"},
+    {"topic": "Other", "question": "What is the most common color of toilet paper in France?", "answer": "pink", "hint": "It is a most girls favorite color"},
+    {"topic": "Other", "question": "David Bowie starred in which 1980s cult classic movie?", "answer": "labyrinth", "hint": "It is a movie with a lot of mazes"},
+    {"topic": "Other", "question": "How many wives did Henry VIII have?", "answer": "6", "hint": "It is more than 5"},
     
 ]

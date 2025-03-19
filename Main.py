@@ -27,9 +27,6 @@ def welcome_to_awesome_quiz(): # Introduces player gives a short intro / a brief
     typewritter("Sport, Hope you know lots of different sports.")
     typewritter("Other, it's like General Knowledge but has very random questions, so you get hints for this one. You will need it.")
 
-#########################################################################################################################
-
-#Could make this a lot cleaner, will do later, for now make sure it works
 
 def General_Knowledge():
     global category
@@ -59,8 +56,6 @@ def Other():
     typewritter("Lets get started.")
     question_getter_Other(questions) # Calls the function to get the questions
 
-#########################################################################################################################
-
 def topic_selector(): # Asks the user for which topic they should chose
     typewritter("Now lets challenge you, what topic would you like to choose?")
     valid_answer = False # Needed to start the loop
@@ -80,8 +75,6 @@ def topic_selector(): # Asks the user for which topic they should chose
         else:
             print("Please answer carefully")
 
-#########################################################################################################################
-#Could make this a lot cleaner will do later, for now make sure it works
 
 def question_getter_General(Questions): # Grabbing the questions for the quiz # Need to change it 
     global score # Makes the score global so it can be used in the function, otherwise there would be an error, Co Pilot helped me with this
@@ -129,7 +122,6 @@ def question_getter_Sport(Questions): # Grabbing the questions for the quiz # Ne
                     typewritter("Incorrect!")
                     typewritter(f"The answer is {question['answer']}.") # Tells the player the answer if they get it wrong
            
-
 def question_getter_Other(Questions): # Grabbing the questions for the quiz # Need to change it 
     global score # Makes the score global so it can be used in the function, otherwise there would be an error, Co Pilot helped me with this
     global hints # Makes the hints global so it can be used in the function, otherwise there would be an error, Co Pilot helped me with this
@@ -191,7 +183,7 @@ def update_leaderboard(player_name, score, category):
                 file.writelines(new_lines)
     else:
         with open(leaderboard_file, "w") as file:
-            file.write(f"{player_name} with {score} in {category}\n")
+            file.write(f"{player_name} with {score}\n") #in {category}
 
 def display_leaderboard(category):
     leaderboard_file = "leaderboard"
@@ -205,6 +197,7 @@ def display_leaderboard(category):
             typewritter(f"No scores yet in {category}.")
     else:
         typewritter("No scores yet.")
+
 #########################################################################################################################
 
 def main(): # Sir won't let the large 1000 line code happen :( wants it to be neat, make it condensed into large function
