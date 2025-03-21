@@ -155,7 +155,7 @@ def question_getter_Other(Questions): # Grabbing the questions for the quiz # Ne
                     typewritter("Incorrect!")
                     typewritter(f"The answer is {question['answer']}.") # Tells the player the answer if they get it wrong
 
-#######################################################################
+#########################################################################################################################
 
 # My idea and i tried to do it but co pilot carried me, this is for the leaderboard stuff
 # Didn't understand how to do it all co pilot, can hashtag out and not use in the marking
@@ -204,7 +204,7 @@ def main(): # Sir won't let the large 1000 line code happen :( wants it to be ne
     global score
     global hints
     global category
-    welcome_to_awesome_quiz() # Calls the welcome function to introduce player etc
+    #welcome_to_awesome_quiz() # Calls the welcome function to introduce player etc
     topic_selector()
     typewritter(f"Your score in this quiz is: {score}" ) # Prints the score of the player
     typewritter("Can we get your name please? ")
