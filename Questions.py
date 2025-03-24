@@ -5,7 +5,7 @@ questions = [
     {"topic": "General", "question": "How many minutes are in a day?", "answer": ["1440"]},
     {"topic": "General", "question": "The Red Cross charity is based in which Swiss city?", "answer": ["geneva"]},
     {"topic": "General", "question": "What is the longest river in the world?", "answer": ["nile", "the river nile", "nile river", "the nile river"]}, # Lots of different ways to say it
-    {"topic": "General", "question": "", "answer": [""]},
+    {"topic": "General", "question": "Jim Henson is the creator of what favourite kids show", "answer": ["the muppets", "muppets"]},
     {"topic": "General", "question": "", "answer": [""]},
     {"topic": "General", "question": "", "answer": [""]},
     {"topic": "General", "question": "", "answer": [""]},
@@ -16,7 +16,7 @@ questions = [
     {"topic": "Sport", "question": "What is the most popular sport in the world?", "answer": ["football", "soccer"]}, 
     {"topic": "Sport", "question": "In bowling, what is it called when you get three strikes in a row?", "answer": ["turkey"]}, 
     {"topic": "Sport", "question": "What is the only sport to be played on the moon?", "answer": ["golf"]},
-    {"topic": "Sport", "question": "How many players are on defence are on the field in baseball", "answer": "9"},
+    {"topic": "Sport", "question": "How many players while on defence are on the field field in baseball", "answer": "9"},
     {"topic": "Sport", "question": "Who was the top scorer in the 2022/23 Premier League season?", "answer": ["erling haaland", "haaland"]},
     {"topic": "Sport", "question": "In which sport do teams compete to win the Stanley Cup?", "answer": ["ice hockey", "nhl", "canadian hockey", "canadian shenags"]},
     {"topic": "Sport", "question": "Usain Bolt is still the fastest man in the world. In which year did he set that record?", "answer": ["2009"]},

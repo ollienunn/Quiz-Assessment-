@@ -17,8 +17,6 @@ def typewritter(words): # Typewritter effect to make the quiz look less boring
             sleep(0.5)
     sys.stdout.write("\n") # Adds a gap between the next line
 
-#typewritter("Your gonna love this quiz.") # Have to start with 'typewritter' for it to work
-
 def welcome_to_awesome_quiz(): # Introduces player gives a short intro / a brief description of the categories
     typewritter("Welcome to the most fantastic, amazing, best crafted quiz you will ever have the joy of taking.")
     typewritter("This quiz will have three categories, how great is that!")
