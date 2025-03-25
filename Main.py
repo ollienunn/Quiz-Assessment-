@@ -61,7 +61,7 @@ def topic_selector(): # Asks the user for which topic they should chose
             valid_answer = True
             Other() # Moves to the Other part
         else:
-            print("Please answer carefully")
+            beam("Please answer carefully")
 
 def question_getter_General(Questions): # Grabbing the questions for the quiz # Need to change it 
     global score # Makes the score global so it can be used in the function, otherwise there would be an error, Co Pilot helped me with this
@@ -194,11 +194,26 @@ def main(): # Sir won't let the large 1000 line code happen :( wants it to be ne
     welcome_to_awesome_quiz() # Calls the welcome function to introduce player etc
     topic_selector()
     beam(f"Your score in this quiz is: {score}" ) # Prints the score of the player
-    beam("Can we get your name please? ")
+    beam("Would you like to see the percentage of your score? (Yes / No)") # Asks the player if they would like to see the percentage of their score
+    valid_answer = False # Needed to start the loop
+    while valid_answer == False: # Simple loop to check whether the answer is one that is avaible otherwise restates the question
+        answer = input("") # Gets the answer from the player
+        answer = answer.lower().strip() # Makes the answer lowercase
+        if answer == "yes": # Checks if the answer is either yes or no
+            valid_answer = True # Ends the loop
+            percentage = (score / 10) * 100 # Calculates the percentage of the score
+            beam(f"Your score is {percentage}%") # Prints the percentage of the score
+        elif answer == "no":
+            valid_answer = True
+            beam("Okay, moving on.")
+        else:
+            valid_answer = False
+            beam("Please answer carefully")
+    beam("What is your name?")
     player_name = input("").strip()
     update_leaderboard(player_name, score, category)
     display_leaderboard(category)
-    beam("Would you like to play again?") # Asks the player if they would like to play again
+    beam("Would you like to play again? (Yes / No)") # Asks the player if they would like to play again
     # Loop to make sure the player answers yes or no otherwise it will keep asking the question
     valid_answer = False # Needed to start the loop
     while valid_answer == False: # Simple loop to check whether the answer is one that is avaible otherwise restates the question
