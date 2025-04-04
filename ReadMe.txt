@@ -1,3 +1,4 @@
+There is only 1 requirement you need to have pip installed for the text effect in the terminal
 The quiz is seperated into 3 categories 
 There are rules:
 No looking up the answers (its ok to get it wrong)
