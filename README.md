@@ -5,7 +5,7 @@ Welcome to the **Best Bar Quiz!**, a Python-based interactive quiz game. This pr
 ---
 
 ## Author
-- Main author and developer - Oliver Nunn, Mighty Murray Man, St Augustines
+- Main author and developer - Oliver Nunn, Mighty Murray Man, Student at St Augustines 
 - Assistance - GitHub Copilot
 
 ---
