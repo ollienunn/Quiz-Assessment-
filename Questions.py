@@ -4,10 +4,10 @@ questions = [
     {"topic": "General", "question": "Which country were the 2010 Winter Olympics held in?", "answer": ["canada"]},
     {"topic": "General", "question": "How many minutes are in a day?", "answer": ["1440"]},
     {"topic": "General", "question": "The Red Cross charity is based in which Swiss city?", "answer": ["geneva"]},
-    {"topic": "General", "question": "What is the longest river in the world?", "answer": ["nile", "the river nile", "nile river", "the nile river"]}, # Lots of different ways to say it
+    {"topic": "General", "question": "What is the longest river in the world?", "answer": ["nile", "the river nile", "nile river", "the nile river", "the nile"]}, # Lots of different ways to say it
     {"topic": "General", "question": "Jim Henson is the creator of what favourite kids show", "answer": ["the muppets", "muppets"]},
     {"topic": "General", "question": "What is the national animal of Scotland", "answer": ["unicorn"]},
-    {"topic": "General", "question": "What is the only continent with land in all four hemispheres", "answer": ["Africa"]},
+    {"topic": "General", "question": "What is the only continent with land in all four hemispheres", "answer": ["africa"]},
     {"topic": "General", "question": "What is the largest mammal in the world?", "answer": ["blue whale"]},
     
     # Gap to make it look nicer and distinguish between the topics

@@ -1,6 +1,6 @@
 from Questions import questions # Gets the file called questions than imports the dictionary called questions, very cool, very useful
 from Other_effect import beam # Imports the beam effect from the other file, very cool, very useful
-from Rain_Effect import decrypt # Imports the decrypt effect from the other file, very cool, very useful
+from Rain_Effect import decrypt # Imports the decrypt effect from the other file, very cool, very useful, takes a while might annoy sir :)
 import random # To mix up questions WEP
 import os # To check if the file exists
 
