@@ -193,7 +193,7 @@ def main(): # Sir won't let the large 1000 line code happen :( wants it to be ne
     global category
     welcome_to_awesome_quiz() # Calls the welcome function to introduce player etc
     topic_selector()
-    beam(f"Your score in this quiz is: {score}" ) # Prints the score of the player
+    beam(f"Your score in this quiz is: {score} / 10" ) # Prints the score of the player
     beam("Would you like to see the percentage of your score? (Yes / No)") # Asks the player if they would like to see the percentage of their score
     valid_answer = False # Needed to start the loop
     while valid_answer == False: # Simple loop to check whether the answer is one that is avaible otherwise restates the question
